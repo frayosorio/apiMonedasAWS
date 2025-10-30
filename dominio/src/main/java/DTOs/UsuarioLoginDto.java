@@ -1,4 +1,4 @@
-package monedas.api.dominio.dtos;
+package monedas.api.dominio.DTOs;
 
 import monedas.api.dominio.entidades.Usuario;
 

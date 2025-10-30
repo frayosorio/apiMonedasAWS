@@ -46,14 +46,18 @@ public MonedaServicio(IMonedaRepositorio repositorio,
     @Override
     public Moneda agregar(Moneda moneda){ 
         moneda.setId(0);
-        return repositorio.save(moneda);
+        var monedaGuardada = repositorio.save(moneda);
+        MetricaServicio.publicarMetrica("RegistroAgregado", 1.0);
+        return monedaGuardada;
     }
 
     @Override
     public Moneda modificar(Moneda moneda){ 
         Optional<Moneda> monedaEncontrado = repositorio.findById(moneda.getId());
         if (!monedaEncontrado.isEmpty()) {
-            return repositorio.save(moneda);
+            var monedaGuardada = repositorio.save(moneda);
+            MetricaServicio.publicarMetrica("RegistroModificado", 1.0);
+            return monedaGuardada;
         } else {
             return null;
         }
@@ -63,6 +67,7 @@ public MonedaServicio(IMonedaRepositorio repositorio,
     public boolean eliminar(Long id){ 
         try {
             repositorio.deleteById(id);
+            MetricaServicio.publicarMetrica("RegistroEliminado", 1.0);
             return true;
         } catch (Exception ex) {
             return false;
