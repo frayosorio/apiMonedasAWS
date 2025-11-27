@@ -3,12 +3,11 @@
   "networkMode": "awsvpc",
   "cpu": "256",   
   "memory": "512", 
-  "executionRoleArn": "arn:aws:iam::534224643194:role/ecsTaskExecutionRole",
-  "taskRoleArn": "arn:aws:iam::534224643194:role/api-monedas-task-role",
+  "executionRoleArn": "arn:aws:iam::812279160596:role/ecsTaskExecutionRole",
   "containerDefinitions": [
     {
       "name": "api-monedas-container", 
-      "image": "534224643194.dkr.ecr.us-east-2.amazonaws.com/api-monedas:latest", 
+      "image": "812279160596.dkr.ecr.us-east-2.amazonaws.com/api-monedas:latest", 
       "portMappings": [
         {
           "containerPort": 8080, 
